@@ -1,16 +1,27 @@
-name: Build and Deploy to Netlify
+name: CI
+
 on:
+  # pull_request:
+  #   branches: ["*"]
   push:
-   branches: ["x"]
+    branches: ["*"]
+
+# You can leverage Vercel Remote Caching with Turbo to speed up your builds
+# @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
+env:
+  TURBO_TEAM: k6
+  TURBO_TOKEN: orXUG7C0upy1PfeztANQZEBp
+
 jobs:
   build:
+    # env:
+    #   DATABASE_URL: postgres://vsamaru:3WZsgHBC8tqE@ep-weathered-mouse-851080.eu-central-1.aws.neon.tech/ve
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out code
+      - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-            fetch-depth: 2
- 
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
