@@ -23,9 +23,17 @@ jobs:
       - name: Build
         run: npm run build && npm run deploy --prod
 
-      - uses: jsmrcaga/action-netlify-deploy@master
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
         with:
-
+          publish-dir: './apps/web/dist'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
           NETLIFY_AUTH_TOKEN: Rh2EJPNVrNotTRbUlOjREJMJTAEtjHJeNp2aXM05IW8
           NETLIFY_SITE_ID: 19ee4990-51ce-42be-9611-cb21cb18accd
-        
+        timeout-minutes: 1
