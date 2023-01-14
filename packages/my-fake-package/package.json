@@ -1,0 +1,14 @@
+{
+  "name": "@felipefreitag/my-fake-package",
+  "version": "2.0.0",
+  "description": "Foo bar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "lodash": "4.17.21"
+  },
+  "author": "",
+  "license": "MIT"
+}
